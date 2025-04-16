@@ -1,7 +1,6 @@
-# pygame_test.py
-
 # Импортировать библиотеку Pygame.
 import pygame
+
 
 # Инициализировать библиотеку Pygame.
 pygame.init()
