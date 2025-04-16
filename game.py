@@ -5,11 +5,14 @@ from gameparts.exceptions import CellOccupiedError, FieldIndexError
 
 
 def save_result(text):
-    # Открыть файл example.txt на чтение (аргумент 'r').
-    file = open('results.txt', 'a', encoding='utf-8')
-    # Прочитать первые 12 символов из файла и сохранить их в переменную.
-    file.write(text)
-    file.close()
+    # Применяем контекстный менеджер with ContextManager as cm: .
+    with open('results.txt', 'a', encoding='utf-8') as f:
+        f.write(text + '\r')
+    # # Открыть файл example.txt на чтение (аргумент 'r').
+    # file = open('results.txt', 'a', encoding='utf-8')
+    # # Прочитать первые 12 символов из файла и сохранить их в переменную.
+    # file.write(text)
+    # file.close()
 
 
 def main():
@@ -70,7 +73,7 @@ def main():
         print('Ход сделан!')
         game.display()
         if game.check_win(current_player):
-            text = f'Победил {current_player}\r'
+            text = f'Победил {current_player}'
             print(text)
             running = False
             save_result(text)
